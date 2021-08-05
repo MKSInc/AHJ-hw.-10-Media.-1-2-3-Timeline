@@ -30,6 +30,8 @@ h2 span {
   color: slateblue;
 }
 
-.container {
-  padding: 15px;
+._container {
+  max-width: 600px;
+  padding: 0 15px;
+  margin: 0 auto;
 }

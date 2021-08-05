@@ -1,0 +1,9 @@
+Микрофон (mic.svg) - https://svgsilh.com/ru/3f51b5/image/468291.html
+
+Камера (video.svg) - https://svgsilh.com/ru/3f51b5/image/481808.html
+
+Флажок (oksvg.) - https://svgsilh.com/ru/4caf50/image/2025986.html
+
+Отмена (cancel.svg) - https://svgsilh.com/ru/f44336/image/39951.html
+
+Геолокация (geolocation.svg) - https://svgsilh.com/ru/3f51b5/image/1864379.html
