@@ -1,0 +1,122 @@
+:root {
+  --modal-br: 15px; /* border-radius модального окна */
+  --modal-el-br: 5px; /* border-radius интерактивных элементов */
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  max-width: 400px;
+
+  border: 1px solid lightgray;
+  border-radius: var(--modal-br);
+  background-color: white;
+
+  padding: 30px;
+}
+
+.modal__header {
+  margin-bottom: 15px;
+}
+
+.modal__title {
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.modal__body {
+  margin-bottom: 15px;
+}
+
+.modal__text {
+  text-align: justify;
+}
+
+.form-modal__data {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+.form-modal__label {
+  margin-bottom: 10px;
+}
+
+.form-modal__input-wrap {
+  position: relative;
+}
+
+.form-modal__input {
+  width: 100%;
+  font-size: 16px;
+  border: 2px solid var(--color-blue-48);
+  border-radius: var(--modal-el-br);
+  box-shadow: inset 0 0 3px 0 var(--color-blue-48);
+
+  padding: 8px;
+  margin-bottom: 3px;
+  outline: none;
+}
+
+.form-modal__input:focus {
+  box-shadow: inset 0 0 5px 0 var(--color-blue-48);
+}
+
+.form-modal__err-msg {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  bottom: -1px;
+
+  border-radius: 20px;
+  background-color: #ff0f0f;
+  color: white;
+
+  padding: 2px 30px;
+  white-space: nowrap;
+}
+
+.form-modal__control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-modal__btn {
+  cursor: pointer;
+
+  font-size: 15px;
+
+  border: none;
+  border-radius: var(--modal-el-br);
+  background-color: var(--color-blue-48);
+  color: white;
+
+  padding: 8px;
+  margin-bottom: 10px;
+
+  outline: none;
+}
+
+.form-modal__btn:focus,
+.form-modal__btn:hover {
+  box-shadow: 0 0 5px 0 var(--color-blue-43);
+}
+
+.form-modal__btn:hover {
+  background-color: var(--color-blue-43);
+}

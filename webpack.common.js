@@ -32,10 +32,13 @@ module.exports = (buildMode) => ({
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(svg|mp3|mp4)$/,
         use: [
           {
             loader: 'url-loader',
+            options: {
+              limit: 3072,
+            },
           },
         ],
       },

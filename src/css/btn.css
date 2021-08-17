@@ -34,16 +34,16 @@
 }
 
 .btn-start {
-  border-color: #3f51b5;
+  border-color: var(--color-blue-48);
 }
 
 .btn-start:focus,
 .btn-start:hover {
-  box-shadow: 0 0 5px 0 #3f51b5;
+  box-shadow: 0 0 5px 0 var(--color-blue-48);
 }
 
 .form-media__btn-send {
-  border-color: #4caf50;
+  border-color: var(--color-green);
 }
 
 .form-media__btn-send::after {
@@ -56,11 +56,11 @@
 
 .form-media__btn-send:focus,
 .form-media__btn-send:hover {
-  box-shadow: 0 0 5px 0 #4caf50;
+  box-shadow: 0 0 5px 0 var(--color-green);
 }
 
 .form-media__btn-cancel {
-  border-color: #9e9e9e;
+  border-color: var(--color-gray);
 }
 
 .form-media__btn-cancel::after {
@@ -71,5 +71,5 @@
 
 .form-media__btn-cancel:focus,
 .form-media__btn-cancel:hover {
-  box-shadow: 0 0 5px 0 #9e9e9e;
+  box-shadow: 0 0 5px 0 var(--color-gray);
 }
