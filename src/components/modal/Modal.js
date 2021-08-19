@@ -36,7 +36,7 @@ export default class Modal {
     this.els.form = this.element.querySelector('.form-modal');
     this.els.form.addEventListener('submit', this.onFormSubmit.bind(this));
 
-    this.els.btnCancel = this.element.querySelector('.form-modal__btn-cancel');
+    this.els.btnCancel = this.element.querySelector('.modal__btn-cancel');
     this.els.btnCancel.addEventListener('click', this.onBtnCancelClick.bind(this));
 
     // Определяем первый элемент формы для фокуса, а также для табуляции внутри формы по кругу.

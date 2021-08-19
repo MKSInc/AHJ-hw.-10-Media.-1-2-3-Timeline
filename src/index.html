@@ -59,10 +59,11 @@
                </div>
             </footer>
          </div>
+
          <div class="timeline__post post">
             <div class="post__body">
                <div class="post__video">
-                  <video src="media/Beach - 3998_960x540.mp4" preload="metadata" controls></video>
+                  <video src="media/Beach - 3998_960x540.mp4" controls></video>
                </div>
             </div>
             <footer class="post__footer">
@@ -111,22 +112,27 @@
       <footer class="timeline__footer">
          <div class="_container">
             <div class="user-panel">
-               <form class="user-panel__form-text">
-                  <div class="user-panel__input-wrap">
-                     <textarea class="user-panel__input" rows="3" name="message" placeholder="Enter a message"></textarea>
-                  </div>
-               </form>
-               <form class="user-panel__form-media form-media">
-                  <div class="form-media__start ">
-                     <button class="form-media__btn-audio btn btn-start"></button>
-                     <button class="form-media__btn-video btn btn-start"></button>
-                  </div>
-                  <div class="form-media__stop _hidden">
-                     <button class="form-media__btn-send btn btn-stop"></button>
-                     <span class="form-media__duration">00:22</span>
-                     <button class="form-media__btn-cancel btn btn-stop"></button>
-                  </div>
-               </form>
+               <div class="user-panel__video-wrap _hidden">
+                  <video class="user-panel__video" autoplay muted></video>
+               </div>
+               <div class="user-panel__control">
+                  <form class="user-panel__form-text">
+                     <div class="user-panel__input-wrap">
+                        <textarea class="user-panel__input" rows="3" name="message" placeholder="Enter a message"></textarea>
+                     </div>
+                  </form>
+                  <form class="user-panel__form-media form-media">
+                     <div class="form-media__start">
+                        <button class="form-media__btn-audio btn btn-start"></button>
+                        <button class="form-media__btn-video btn btn-start"></button>
+                     </div>
+                     <div class="form-media__stop _hidden">
+                        <button class="form-media__btn-send btn btn-stop"></button>
+                        <span class="form-media__duration"></span>
+                        <button class="form-media__btn-cancel btn btn-stop"></button>
+                     </div>
+                  </form>
+               </div>
             </div>
          </div>
       </footer>

@@ -26,10 +26,13 @@ export default class Post {
     this.setDate();
 
     const create = {
-      text: this.createTextPost.bind(this),
+      text: Post.createTextPost,
+      audio: Post.createAudioPost,
+      video: Post.createVideoPost,
     };
 
-    create[type](content);
+    const postEl = create[type](content);
+    this.els.body.append(postEl);
   }
 
   setCoords(coords) {
@@ -48,11 +51,26 @@ export default class Post {
     this.els.date.textContent = `${date} ${time}`;
   }
 
-  createTextPost(content) {
+  static createTextPost(content) {
     const postTextEl = document.createElement('p');
     postTextEl.classList.add('post__text');
     postTextEl.textContent = content;
+    return postTextEl;
+  }
 
-    this.els.body.append(postTextEl);
+  static createAudioPost(content) {
+    const postAudioEl = document.createElement('audio');
+    postAudioEl.preload = 'metadata';
+    postAudioEl.controls = true;
+    postAudioEl.src = URL.createObjectURL(content);
+    return postAudioEl;
+  }
+
+  static createVideoPost(content) {
+    const postVideoEl = document.createElement('video');
+    postVideoEl.preload = 'metadata';
+    postVideoEl.controls = true;
+    postVideoEl.src = URL.createObjectURL(content);
+    return postVideoEl;
   }
 }

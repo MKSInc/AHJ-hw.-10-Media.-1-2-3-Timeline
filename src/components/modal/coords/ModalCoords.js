@@ -1,4 +1,5 @@
 import html from './modal-coords.html';
+import './modal-coords.css';
 import ModalTimeline from '../ModalTimeline';
 
 /*

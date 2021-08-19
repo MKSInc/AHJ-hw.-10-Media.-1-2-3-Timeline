@@ -47,56 +47,12 @@
   text-align: justify;
 }
 
-.form-modal__data {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 28px;
-}
-
-.form-modal__label {
-  margin-bottom: 10px;
-}
-
-.form-modal__input-wrap {
-  position: relative;
-}
-
-.form-modal__input {
-  width: 100%;
-  font-size: 16px;
-  border: 2px solid var(--color-blue-48);
-  border-radius: var(--modal-el-br);
-  box-shadow: inset 0 0 3px 0 var(--color-blue-48);
-
-  padding: 8px;
-  margin-bottom: 3px;
-  outline: none;
-}
-
-.form-modal__input:focus {
-  box-shadow: inset 0 0 5px 0 var(--color-blue-48);
-}
-
-.form-modal__err-msg {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 100%);
-  bottom: -1px;
-
-  border-radius: 20px;
-  background-color: #ff0f0f;
-  color: white;
-
-  padding: 2px 30px;
-  white-space: nowrap;
-}
-
-.form-modal__control {
+.modal__control {
   display: flex;
   flex-direction: column;
 }
 
-.form-modal__btn {
+.modal__btn {
   cursor: pointer;
 
   font-size: 15px;
@@ -112,11 +68,15 @@
   outline: none;
 }
 
-.form-modal__btn:focus,
-.form-modal__btn:hover {
+.modal__btn:last-child {
+  margin-bottom: 0;
+}
+
+.modal__btn:focus,
+.modal__btn:hover {
   box-shadow: 0 0 5px 0 var(--color-blue-43);
 }
 
-.form-modal__btn:hover {
+.modal__btn:hover {
   background-color: var(--color-blue-43);
 }

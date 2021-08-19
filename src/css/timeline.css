@@ -30,13 +30,27 @@
 }
 
 .user-panel {
-  display: flex;
-  align-items: center;
-
   border: 2px solid var(--color-blue-48);
   border-radius: 15px;
   background-color: white;
   padding: 15px;
+}
+
+.user-panel__video-wrap {
+  border: 2px solid var(--color-blue-48);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.user-panel__video {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.user-panel__control {
+  display: flex;
+  align-items: center;
 }
 
 .user-panel__form-text {
