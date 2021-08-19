@@ -152,22 +152,30 @@ export default class Timeline {
 
     const post = new Post(postData);
     this.els.body.prepend(post.element);
+
+    if (type === 'text') this.els.input.value = '';
   }
 
+  // Не удается использовать, так как попытка прокинуть событие с помощью dispatchEvent из
+  // onInputKeypress блокируется в браузере firefox и считается устаревшим подходом.
+  // eslint-disable-next-line class-methods-use-this
   async onFormTextSubmit(event) {
     event.preventDefault();
-    this.createPost({ type: 'text', content: this.els.input.value });
-
-    this.els.input.value = '';
+    // onFormTextSubmit не будет вызван.
+    // Запускаем this.createPost() сразу в onInputKeypress.
+    // this.createPost({ type: 'text', content: this.els.input.value });
   }
 
-  onInputKeypress(event) {
+  async onInputKeypress(event) {
     if (event.key !== 'Enter') return;
     event.preventDefault();
     if (this.els.input.value === '') return;
 
     // submit формы через this.els.forms.text.submit() не отлавливается в addEventListener.
-    this.els.forms.text.dispatchEvent(new Event('submit'));
+    // Однако попытка с использованием dispatchEvent блокируется в firefox.
+    // Поэтому вызываем this.createPost() прямо здесь.
+    // this.els.forms.text.dispatchEvent(new Event('submit'));
+    this.createPost({ type: 'text', content: this.els.input.value });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -205,6 +213,8 @@ export default class Timeline {
       noCameraPermission: 'В Вашем браузере запрещен доступ к веб-камере. Если Вы хотите сделать видео запись, разрешите доступ к веб-камере.',
       audioRecordTrouble: 'Ошибка аудио записи. Проверьте, подключен ли микрофон.',
       videoRecordTrouble: 'Ошибка видео записи. Проверьте, подключена ли веб-камера.',
+      noPermissionSupportMic: 'Ошибка аудио записи. Проверьте, подключен ли микрофон и разрешен ли к нему доступ в Вашем брвузере.',
+      noPermissionSupportCamera: 'Ошибка видео записи. Проверьте, подключена ли веб-камера и разрешен ли к ней доступ в Вашем брвузере.',
     };
 
     this.modals.info.show(messages[errCode]);
@@ -284,22 +294,32 @@ export default class Timeline {
           name: 'microphone',
           textPermission: 'noMicPermission',
           textRecordTrouble: 'audioRecordTrouble',
+          noPermissionSupport: 'noPermissionSupportMic',
         },
         video: {
           name: 'camera',
           textPermission: 'noCameraPermission',
           textRecordTrouble: 'videoRecordTrouble',
+          noPermissionSupport: 'noPermissionSupportCamera',
         },
       };
 
-      const micStatusPermission = await navigator.permissions.query({ name: err[type].name });
+      // Дополнительное оборачивание в try для firefox, так как он на данный момент не поддерживает
+      // name: 'microphone' и name: 'camera'.
+      try {
+        // Проверка разрешен ли доступ к микрофону/веб-камере. Работает в Chrome.
+        const micStatusPermission = await navigator.permissions.query({ name: err[type].name });
 
-      if (micStatusPermission.state === 'denied') {
-        await this.showModalInfo(err[type].textPermission);
-        return;
+        if (micStatusPermission.state === 'denied') {
+          await this.showModalInfo(err[type].textPermission);
+          return;
+        }
+
+        // Так как доступ разрешен, то возможно микрофон/веб-камера не подключены.
+        await this.showModalInfo(err[type].textRecordTrouble);
+      } catch (e2) {
+        await this.showModalInfo(err[type].noPermissionSupport);
       }
-
-      await this.showModalInfo(err[type].textRecordTrouble);
     }
   }
 
